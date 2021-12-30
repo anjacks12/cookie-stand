@@ -1,5 +1,9 @@
 'use strict';
 
+// window into the DOM
+const div = document.getElementById('cookiesSoldData');
+const table = document.getElementById('table');
+
 // 6 am to 7 pm = 14 hours total (hoursArray)
 let hoursArray = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm'];
 
@@ -12,7 +16,7 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
   this.avgCookieSale = avgCookieSale;
   this.startOfDaySales = startOfDaySales;
   // need to an empty array to store numbers of cookies sold and the hour
-  let cookiesSoldArray = [];
+  this.cookiesSoldArray = [];
 
   // method to generate random
   this.randomCustomerNumber = function () {
@@ -23,7 +27,7 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
   this.numberOfCookiesPerHour = function () {
     for (let i = 0; i < hoursArray.length; i++) {
       let hourlyCookies = Math.ceil((this.avgCookieSale * this.randomCustomerNumber()));
-      cookiesSoldArray.push(hourlyCookies);
+      this.cookiesSoldArray.push(hourlyCookies);
 
       // need to get total number of cookies sold for the day by summing all 14 values cookiesSoldArray
       //this.startOfDaySales holds 0 value + totalCookiesSold
@@ -39,8 +43,7 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
     // window into the DOM for name of store
     // give content to heading
     // render "results" of # cookies sold for each hour of the day
-    // window into the DOM
-    const div = document.getElementById('cookiesSoldData');
+
     // 1. create element for section
     let section = document.createElement('section');
     div.appendChild(section);
@@ -52,7 +55,7 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
       // 1. create element for li to list sales of cookies/hour
       let li = document.createElement('li');
       // 2. give it content of numbers of cookies sold at a certain hour
-      li.textContent = `${hoursArray[i]}: ${cookiesSoldArray[i]} cookies`;
+      li.textContent = `${hoursArray[i]}: ${this.cookiesSoldArray[i]} cookies`;
       // 3. append it to the DOM via the <ul>
       ul.appendChild(li);
       //with total at bottom loaded onto index.html page //needs for loop
@@ -62,6 +65,7 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
     ul.appendChild(totalCookies);
   };
 }
+
 
 // constructor parameters (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales)
 let seattle = new Store('Seattle', 23, 65, 6.3, 0);
@@ -79,6 +83,41 @@ paris.render();
 let lima = new Store('Lima', 2, 16, 4.6, 0);
 lima.render();
 
+
+// create prototype to add store hours in table header
+Store.prototype.renderHours = function () {
+  let thead = document.createElement('thead');
+  table.appendChild(thead);
+  let trHeader = document.createElement('tr');
+  thead.appendChild(trHeader);
+  for (let i = 0; i < hoursArray.length; i++) {
+    let hourRow = document.createElement('th');
+    hourRow.textContent = hoursArray[i];
+    trHeader.appendChild(hourRow);
+  }
+};
+
+// create prototype to add cookie sales and store name to table body
+Store.prototype.renderCookieSales = function() {
+  let tbody = document.createElement('tbody');
+  table.appendChild(tbody);
+  let trBody = document.createElement('tr');
+  tbody.appendChild(trBody);
+  for (let i = 0; i < hoursArray.length; i++) {
+    let tdBody = document.createElement('td');
+    tdBody.textContent = this.cookiesSoldArray[i];
+    trBody.appendChild(tdBody);
+  }
+};
+seattle.renderTable();
+
+// Store.prototype.renderCookiesTable = function () {
+//   let tr = document.createElement('tr');
+//   tr.textContent = this.cookiesSoldArray;
+//   cookieData.appendChild(tr);
+
+// };
+// seattle.renderCookiesTable();
 
 // create object seattle to store min/max hourly customers and avg cookies per customer
 // let seaTown = {

@@ -7,8 +7,8 @@ const table = document.getElementById('table');
 // 6 am to 7 pm = 14 hours total (hoursArray)
 let hoursArray = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm'];
 
-// new array for all cookies data?
-
+// create array for all cookie stores
+let storeDataArray = [];
 
 // create constructor function to replace object literals of stores
 function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) {
@@ -66,24 +66,25 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
     totalCookies.textContent = `Total: ${this.startOfDaySales} cookies`;
     ul.appendChild(totalCookies);
   };
+  storeDataArray.push(this);
 }
 
 
 // constructor parameters (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales)
 let seattle = new Store('Seattle', 23, 65, 6.3, 0);
-seattle.render();
+//seattle.render();
 
 let tokyo = new Store('Tokyo', 3, 24, 1.2, 0);
-tokyo.render();
+//tokyo.render();
 
 let dubai = new Store('Dubai', 11, 38, 3.7, 0);
-dubai.render();
+//dubai.render();
 
 let paris = new Store('Paris', 20, 38, 2.3, 0);
-paris.render();
+//paris.render();
 
 let lima = new Store('Lima', 2, 16, 4.6, 0);
-lima.render();
+//lima.render();
 
 
 // create prototype to add store hours in table header
@@ -125,37 +126,38 @@ Store.prototype.renderHourlySales = function() {
   let trFoot = document.createElement('tr');
   tfoot.appendChild(trFoot);
   let hourlyTotal = document.createElement('td');
-  hourlyTotal.textContent = 'something here'; // adding function here
+  hourlyTotal.textContent = 'something here';
   trFoot.appendChild(hourlyTotal);
 };
-seattle.renderHours();
-seattle.renderCookieSales();
-tokyo.renderCookieSales();
-dubai.renderCookieSales();
-paris.renderCookieSales();
-lima.renderCookieSales();
+// seattle.renderCookieSales();
+// tokyo.renderCookieSales();
+// dubai.renderCookieSales();
+// paris.renderCookieSales();
+// lima.renderCookieSales();
 
-for (let i = 0; i < hoursArray.length; i++) {
-  this.cookiesSoldArray[i];
+// to get store hours to show up in table
+seattle.renderHours();
+
+let hourlyArray = [];
+
+for (let i = 0; i < storeDataArray.length; i++) {
+  storeDataArray[i].render();
+  storeDataArray[i].renderCookieSales();
+  hourlyArray.push(storeDataArray[i].cookiesSoldArray[0]);
+  let hour1 = hourlyArray[0] + hourlyArray[1] + hourlyArray[2] + hourlyArray [3] + hourlyArray [4];
+  //console.log(storeDataArray[i].cookiesSoldArray[i]);
+  console.log(hour1);
 }
 
-Store.prototype.testHourlySum = function() {
-  for (let i = 0; i < hoursArray.length; i++) {
-    let hour1 = this.cookiesSoldArray[0];
-    console.log(hour1);
-  }
-};
-seattle.testHourlySum();
 
-//seattle.renderHourlySales();
 
-// Store.prototype.renderCookiesTable = function () {
-//   let tr = document.createElement('tr');
-//   tr.textContent = this.cookiesSoldArray;
-//   cookieData.appendChild(tr);
 
-// };
-// seattle.renderCookiesTable();
+
+
+
+
+
+
 
 // create object seattle to store min/max hourly customers and avg cookies per customer
 // let seaTown = {

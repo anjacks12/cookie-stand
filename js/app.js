@@ -7,6 +7,8 @@ const table = document.getElementById('table');
 // 6 am to 7 pm = 14 hours total (hoursArray)
 let hoursArray = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm'];
 
+// new array for all cookies data?
+
 
 // create constructor function to replace object literals of stores
 function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) {
@@ -90,10 +92,12 @@ Store.prototype.renderHours = function () {
   table.appendChild(thead);
   let trHeader = document.createElement('tr');
   thead.appendChild(trHeader);
+  let thEmpty = document.createElement('th');
+  trHeader.appendChild(thEmpty);
   for (let i = 0; i < hoursArray.length; i++) {
-    let hourRow = document.createElement('th');
-    hourRow.textContent = hoursArray[i];
-    trHeader.appendChild(hourRow);
+    let hoursRow = document.createElement('th');
+    hoursRow.textContent = hoursArray[i];
+    trHeader.appendChild(hoursRow);
   }
 };
 
@@ -103,13 +107,47 @@ Store.prototype.renderCookieSales = function() {
   table.appendChild(tbody);
   let trBody = document.createElement('tr');
   tbody.appendChild(trBody);
+  let storeName = document.createElement('td');
+  storeName.textContent = `${this.name}`;
+  trBody.appendChild(storeName);
   for (let i = 0; i < hoursArray.length; i++) {
     let tdBody = document.createElement('td');
     tdBody.textContent = this.cookiesSoldArray[i];
     trBody.appendChild(tdBody);
   }
 };
-seattle.renderTable();
+
+// create prototype to add total hourly cookie sales in table footer
+// render this the very last? do i need an array to get values? probably
+Store.prototype.renderHourlySales = function() {
+  let tfoot = document.createElement('tfoot');
+  table.appendChild(tfoot);
+  let trFoot = document.createElement('tr');
+  tfoot.appendChild(trFoot);
+  let hourlyTotal = document.createElement('td');
+  hourlyTotal.textContent = 'something here'; // adding function here
+  trFoot.appendChild(hourlyTotal);
+};
+seattle.renderHours();
+seattle.renderCookieSales();
+tokyo.renderCookieSales();
+dubai.renderCookieSales();
+paris.renderCookieSales();
+lima.renderCookieSales();
+
+for (let i = 0; i < hoursArray.length; i++) {
+  this.cookiesSoldArray[i];
+}
+
+Store.prototype.testHourlySum = function() {
+  for (let i = 0; i < hoursArray.length; i++) {
+    let hour1 = this.cookiesSoldArray[0];
+    console.log(hour1);
+  }
+};
+seattle.testHourlySum();
+
+//seattle.renderHourlySales();
 
 // Store.prototype.renderCookiesTable = function () {
 //   let tr = document.createElement('tr');

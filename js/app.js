@@ -125,11 +125,11 @@ Store.prototype.renderHourlySales = function() {
   table.appendChild(tfoot);
   let trFoot = document.createElement('tr');
   tfoot.appendChild(trFoot);
-  let tdEmpty = document.createElement('td');
-  tdEmpty.textContent = 'Hourly Total';
-  trFoot.appendChild(tdEmpty);
+  let thEmpty = document.createElement('th');
+  thEmpty.textContent = 'Hourly Total';
+  trFoot.appendChild(thEmpty);
   for (let i =0; i < hoursArray.length; i++) {
-    let hourlyTotal = document.createElement('td');
+    let hourlyTotal = document.createElement('th');
     hourlyTotal.textContent = totalHourlyCookiesSaleArray[i];
     trFoot.appendChild(hourlyTotal);
   }

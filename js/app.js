@@ -42,9 +42,6 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
   // method to render the cookies data
   this.render = function () {
     this.numberOfCookiesPerHour();
-    // window into the DOM for name of store
-    // give content to heading
-    // render "results" of # cookies sold for each hour of the day
 
     // 1. create element for section
     let section = document.createElement('section');
@@ -119,7 +116,7 @@ Store.prototype.renderCookieSales = function() {
 };
 
 // create prototype to add total hourly cookie sales in table footer
-// render this the very last? do i need an array to get values? probably
+// tried to use a nested for loop but couldn't get it to work... maybe later?
 Store.prototype.renderHourlySales = function() {
   let tfoot = document.createElement('tfoot');
   table.appendChild(tfoot);
@@ -134,26 +131,23 @@ Store.prototype.renderHourlySales = function() {
     trFoot.appendChild(hourlyTotal);
   }
 };
-// seattle.renderCookieSales();
-// tokyo.renderCookieSales();
-// dubai.renderCookieSales();
-// paris.renderCookieSales();
-// lima.renderCookieSales();
 
-// to get store hours to show up in table
-
-// instantiating(?) all 5 stores and rendering table below
+// instantiating(?) 5 stores and rendering table of number of cookies sold below
 for (let i = 0; i < storeDataArray.length; i++) {
   storeDataArray[i].render();
   storeDataArray[i].renderCookieSales();
 }
 
+// used for loop to iterate once to get store hours to load at bottom of page
 for (let i = 4; i < storeDataArray.length; i++) {
   storeDataArray[i].renderHours();
 }
 
+// created empty array to store all the hourly cookies sold from each store
 let hourlyCookiesArray = [];
 
+// tried to use a nested for loop but couldn't get it to work; instead, created one array
+// that contains all the cookies sold for all 5 stores (total was 70 elements)
 for (let i = 0; i < storeDataArray.length; i++) {
   for (let a = 0; a < hoursArray.length; a++) {
     //console.log(storeDataArray[i].cookiesSoldArray[a]);
@@ -163,67 +157,54 @@ for (let i = 0; i < storeDataArray.length; i++) {
   }
 }
 
+// created another empty array to contain all the total of cookies each hour for store
+// i.e. at 6 am total cookies sold at seattle + tokyo + dubai + paris + lima = hour01
+// created total of 15 elements
 let totalHourlyCookiesSaleArray = [];
-
+// 6 am
 let hour01 = hourlyCookiesArray[0] + hourlyCookiesArray[14] + hourlyCookiesArray[28] + hourlyCookiesArray[42] + hourlyCookiesArray[56];
-//console.log(hour01);
 totalHourlyCookiesSaleArray.push(hour01);
-
+// 7 am
 let hour02 = hourlyCookiesArray[1] + hourlyCookiesArray[15] + hourlyCookiesArray[29] + hourlyCookiesArray[43] + hourlyCookiesArray[57];
-//console.log(hour02);
 totalHourlyCookiesSaleArray.push(hour02);
-
+// 8 am
 let hour03 = hourlyCookiesArray[2] + hourlyCookiesArray[16] + hourlyCookiesArray[30] + hourlyCookiesArray[44] + hourlyCookiesArray[58];
-//console.log(hour03);
 totalHourlyCookiesSaleArray.push(hour03);
-
+// 9 am
 let hour04 = hourlyCookiesArray[3] + hourlyCookiesArray[17] + hourlyCookiesArray[31] + hourlyCookiesArray[45] + hourlyCookiesArray[59];
-//console.log(hour04);
 totalHourlyCookiesSaleArray.push(hour04);
-
+// 10 am
 let hour05 = hourlyCookiesArray[4] + hourlyCookiesArray[18] + hourlyCookiesArray[32] + hourlyCookiesArray[46] + hourlyCookiesArray[60];
-//console.log(hour05);
 totalHourlyCookiesSaleArray.push(hour05);
-
+// 11 am
 let hour06 = hourlyCookiesArray[5] + hourlyCookiesArray[19] + hourlyCookiesArray[33] + hourlyCookiesArray[47] + hourlyCookiesArray[61];
-//console.log(hour06);
 totalHourlyCookiesSaleArray.push(hour06);
-
+// 12 pm
 let hour07 = hourlyCookiesArray[6] + hourlyCookiesArray[20] + hourlyCookiesArray[34] + hourlyCookiesArray[48] + hourlyCookiesArray[62];
-//console.log(hour07);
 totalHourlyCookiesSaleArray.push(hour07);
-
+// 1 pm
 let hour08 = hourlyCookiesArray[7] + hourlyCookiesArray[21] + hourlyCookiesArray[35] + hourlyCookiesArray[49] + hourlyCookiesArray[63];
-//console.log(hour08);
 totalHourlyCookiesSaleArray.push(hour08);
-
+// 2 pm
 let hour09 = hourlyCookiesArray[8] + hourlyCookiesArray[22] + hourlyCookiesArray[36] + hourlyCookiesArray[50] + hourlyCookiesArray[64];
-//console.log(hour09);
 totalHourlyCookiesSaleArray.push(hour09);
-
+// 3 pm
 let hour10 = hourlyCookiesArray[9] + hourlyCookiesArray[23] + hourlyCookiesArray[37] + hourlyCookiesArray[51] + hourlyCookiesArray[65];
-//console.log(hour10);
 totalHourlyCookiesSaleArray.push(hour10);
-
+// 4 pm
 let hour11 = hourlyCookiesArray[10] + hourlyCookiesArray[24] + hourlyCookiesArray[38] + hourlyCookiesArray[52] + hourlyCookiesArray[66];
-//console.log(hour11);
 totalHourlyCookiesSaleArray.push(hour11);
-
+// 5 pm
 let hour12 = hourlyCookiesArray[11] + hourlyCookiesArray[25] + hourlyCookiesArray[39] + hourlyCookiesArray[53] + hourlyCookiesArray[67];
-//console.log(hour12);
 totalHourlyCookiesSaleArray.push(hour12);
-
+// 6 pm
 let hour13 = hourlyCookiesArray[12] + hourlyCookiesArray[26] + hourlyCookiesArray[40] + hourlyCookiesArray[54] + hourlyCookiesArray[68];
-//console.log(hour13);
 totalHourlyCookiesSaleArray.push(hour13);
-
+// 7 pm
 let hour14 = hourlyCookiesArray[13] + hourlyCookiesArray[27] + hourlyCookiesArray[41] + hourlyCookiesArray[55] + hourlyCookiesArray[69];
-//console.log(hour14);
 totalHourlyCookiesSaleArray.push(hour14);
 
-//console.log(totalHourlyCookiesSaleArray);
-
-
+// used for loop to iterate through the array once to get the total number of cookies sold for each hour; placed in tfoot of table above
 for (let i = 4; i < storeDataArray.length; i++) {
   storeDataArray[i].renderHourlySales();
 }

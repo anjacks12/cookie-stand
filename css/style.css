@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -12,4 +12,98 @@ p.section01 {
 
 li {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+ */
+/* from class 08a lab assignment*/
+* {
+  box-sizing: border-box;
+}
+
+header {
+  background-color: rgb(87, 87, 87);
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+nav {
+  position: relative;
+  bottom: -1rem;
+  width: 960px;
+  margin: 0 auto 1rem auto;
+}
+
+ul, li {
+  display: inline-block;
+  position: relative;
+  top: -2rem;
+  margin: 0 2.5rem;
+}
+
+li a {
+  color: beige;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 auto;
+  width: 960px;
+}
+
+img {
+  margin-bottom: 30px;
+}
+
+article {
+  width: 450px;
+}
+
+article h3 {
+  font-size: large;
+}
+
+article section {
+  height: 325px;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+section p {
+  font-style: italic;
+}
+
+article>a {
+  color: black;
+  text-decoration: none;
+  padding: 7px;
+  background-color: #ddd;
+}
+
+article>a:hover {
+  color: salmon;
+  transition: 350ms;
+}
+
+footer {
+  background-color: rgb(87, 87, 87);
+  height: 100px;
+}
+
+footer>img {
+  margin: 0;
+  margin-left: 25%;
+}
+footer>ol {
+  display: inline-block;
+  font-size: medium;
+}
+
+ol>li {
+  display: block;
+  position: relative;
+  top: -0.25rem;
 }

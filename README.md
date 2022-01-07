@@ -21,8 +21,9 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * [28 Dec 2021 / day 6](https://github.com/anjacks12/cookie-stand/pull/6)
 * [02 Jan 2022 / day 7](https://github.com/anjacks12/cookie-stand/pull/7)
 * [03 Jan 2022 / day 8](https://github.com/anjacks12/cookie-stand/pull/8)
-* [05 Jan 2022 / day 9](URL)
-* [day 10](URL)
+* [05 Jan 2022 / day 9](https://github.com/anjacks12/cookie-stand/pull/9)
+* [06 Jan 2022 / day 10](https://github.com/anjacks12/cookie-stand/pull/10)
+* [day 11](URL)
 
 ### Reflections and Comments
 
@@ -35,4 +36,5 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * Day 7: cleaned up JS file and added some comments for future reference; styled the table to make it look a bit more presentable
 * Day 8: added total cookies sold at each store on the table below; I had forgotten to add that yesterday; adjusted to for loops to get the nested for loops to work, still had to get the results the "long way" but at least the index numbers were easier to keep track of!
 * Day 9: started styling the index.html for the public-facing page for the lab[^2]
-* Day 10: 
+* Day 10: cleaned up CSS code a bit and turned in lab
+* Day 11: 

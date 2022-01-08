@@ -3,6 +3,7 @@
 // window into the DOM
 const div = document.getElementById('cookiesSoldData');
 const table = document.getElementById('table');
+const newStoreForm = document.querySelector('form');
 
 // 6 am to 7 pm = 14 hours total (hoursArray)
 let hoursArray = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm'];
@@ -64,6 +65,22 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
     ul.appendChild(totalCookies);
   };
   storeDataArray.push(this);
+}
+
+// create event handler to target event(adding new store with information from form)
+function submitHandler(event) {
+  event.preventDefault();
+  console.log(event);
+  let storeName = event.target.storename.value;
+  let newMinCustomer = parseInt(event.target.mincustomer.value);
+  let newMaxCustomer = parseInt(event.target.maxcustomer.value);
+  let newAvgCookieSale = parseInt(event.target.cookiesperhour.value);
+  let newStartOfDaySales = 0;
+  // create new store from form
+  let newStore = new Store(storeName, newMinCustomer, newMaxCustomer, newAvgCookieSale, newStartOfDaySales);
+  // render new store onto page
+  newStore.render();
+  newStore.renderCookieSales();
 }
 
 
@@ -212,6 +229,8 @@ for (let i = 4; i < storeDataArray.length; i++) {
   storeDataArray[i].renderHourlySales();
 }
 
+// run the event listener to get information from newStore form
+newStoreForm.addEventListener('submit', submitHandler);
 
 
 

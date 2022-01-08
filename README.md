@@ -39,4 +39,4 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * Day 8: added total cookies sold at each store on the table below; I had forgotten to add that yesterday; adjusted to for loops to get the nested for loops to work, still had to get the results the "long way" but at least the index numbers were easier to keep track of!
 * Day 9: started styling the index.html for the public-facing page for the lab[^2]
 * Day 10: cleaned up CSS code a bit and turned in lab
-* Day 11: [^3]
+* Day 11: added a form to the page that used the information collected to create a new store [^3]; I have to go back and rework a lot of code to be able to remove the rendered list and leave only the form and table on the page; created a pull request for the working code now just in case I end up "lost" in re-working the code

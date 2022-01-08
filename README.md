@@ -10,6 +10,7 @@ This project will calculate the amount of cookies needed to provide an adequate 
 
 * [Nested Arrays in JavaScript](https://www.elated.com/nested-arrays-in-javascript/)[^1]
 * [How to Create Mailto Links](https://www.w3docs.com/snippets/html/how-to-create-mailto-links.html)[^2]
+* [HTML5 Input: Numbers with Decimals](https://www.adventuresintechland.com/html5-input-numbers-with-decimals)[^3]
 
 ### Pull Requests
 
@@ -23,7 +24,8 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * [03 Jan 2022 / day 8](https://github.com/anjacks12/cookie-stand/pull/8)
 * [05 Jan 2022 / day 9](https://github.com/anjacks12/cookie-stand/pull/9)
 * [06 Jan 2022 / day 10](https://github.com/anjacks12/cookie-stand/pull/10)
-* [day 11](URL)
+* [08 Jan 2022 / day 11](URL)
+* [day 12](URL)
 
 ### Reflections and Comments
 
@@ -37,4 +39,4 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * Day 8: added total cookies sold at each store on the table below; I had forgotten to add that yesterday; adjusted to for loops to get the nested for loops to work, still had to get the results the "long way" but at least the index numbers were easier to keep track of!
 * Day 9: started styling the index.html for the public-facing page for the lab[^2]
 * Day 10: cleaned up CSS code a bit and turned in lab
-* Day 11: 
+* Day 11: [^3]

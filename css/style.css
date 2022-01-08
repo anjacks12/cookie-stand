@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 
-body {
+#homebody {
   background-color: rgb(207, 197, 182);
 }
 
-header {
+#home header {
   background-color: rgb(87, 87, 87);
   height: 80px;
 }
@@ -45,7 +45,7 @@ nav a {
   text-decoration: none;
 }
 
-main {
+#homebody main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -55,7 +55,7 @@ main {
   width: 960px;
 }
 
-h1 {
+#home h1 {
   width: 960px;
   font-family: 'Fredericka the Great', cursive;
   font-size: 6rem;

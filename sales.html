@@ -17,6 +17,7 @@
         margin-bottom: 1rem;
         margin-left: 1rem;
       }
+    
       table {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1rem;
@@ -26,14 +27,36 @@
         width: 100%;
       }
     </style>
+
   </head>
   <body>
     <header>
       <h1>Salmon Cookie Project</h1>
     </header>
     <main>
-      <h2 id="cookieStore"></h2>
+
+      <form>
+        <!-- form data collected: store name, min customer, max customer, avg cookies sold -->
+        <fieldset>
+          <legend>Add a New Store</legend>
+          <label>Name of Store
+            <input type="text" name="storename">
+          </label></br>
+          <label>Minimum Number of Customers
+            <input type="number" name="mincustomer">
+          </label></br>
+          <label>Maximum Number of Customers
+            <input type="number" name="maxcustomer">
+          </label></br>
+          <label>Average Cookies Sold per Hour
+            <input type="number" name="cookiesperhour" step="any">
+          </label></br>
+          <input type="submit" name="addstore">
+        </fieldset>
+      </form></br>
+
       <div id="cookiesSoldData">
+      <h2 id="cookieStore"></h2>
       </div>
       <table id="table">
       </table>

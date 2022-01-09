@@ -24,7 +24,8 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * [03 Jan 2022 / day 8](https://github.com/anjacks12/cookie-stand/pull/8)
 * [05 Jan 2022 / day 9](https://github.com/anjacks12/cookie-stand/pull/9)
 * [06 Jan 2022 / day 10](https://github.com/anjacks12/cookie-stand/pull/10)
-* [08 Jan 2022 / day 11](URL)
+* [08 Jan 2022 / day 11](https://github.com/anjacks12/cookie-stand/pull/11)
+* [08 Jan 2022 / day 11](https://github.com/anjacks12/cookie-stand/pull/12)
 * [day 12](URL)
 
 ### Reflections and Comments

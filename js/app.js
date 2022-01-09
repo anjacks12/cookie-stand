@@ -43,26 +43,6 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
   // method to render the cookies data
   this.render = function () {
     this.numberOfCookiesPerHour();
-
-    // 1. create element for section
-    let section = document.createElement('section');
-    div.appendChild(section);
-    // 1. create element for ul for li
-    let ul = document.createElement('ul');
-    ul.textContent = `${this.name}`;
-    section.appendChild(ul);
-    for (let i = 0; i < hoursArray.length; i++) {
-      // 1. create element for li to list sales of cookies/hour
-      let li = document.createElement('li');
-      // 2. give it content of numbers of cookies sold at a certain hour
-      li.textContent = `${hoursArray[i]}: ${this.cookiesSoldArray[i]} cookies`;
-      // 3. append it to the DOM via the <ul>
-      ul.appendChild(li);
-      //with total at bottom loaded onto index.html page //needs for loop
-    }
-    let totalCookies = document.createElement('li');
-    totalCookies.textContent = `Total: ${this.startOfDaySales} cookies`;
-    ul.appendChild(totalCookies);
   };
   storeDataArray.push(this);
 }

@@ -50,7 +50,7 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
 // create event handler to target event(adding new store with information from form)
 function submitHandler(event) {
   event.preventDefault();
-  console.log(event);
+  //console.log(event);
   let storeName = event.target.storename.value;
   let newMinCustomer = parseInt(event.target.mincustomer.value);
   let newMaxCustomer = parseInt(event.target.maxcustomer.value);
@@ -148,14 +148,23 @@ Store.prototype.renderHourlySales = function() {
 // created empty array to store all the hourly cookies sold from each store
 let hourlyCookiesArray = [];
 
-// created one array that contains all the cookies sold for all 5 stores (total was 70 elements)
-for (let j = 0; j < hoursArray.length; j++) {
-  for (let i = 0; i < storeDataArray.length; i++) {
-    let hourOne = storeDataArray[i].cookiesSoldArray[j];
-    hourlyCookiesArray.push(hourOne);
+Store.prototype.totalCookies = function() {
+  // created one array that contains all the cookies sold for all 5 stores (total was 70 elements)
+  let start = 0;
+  for (let j = 0; j < hoursArray.length; j++) {
+    for (let i = 0; i < storeDataArray.length; i++) {
+      //console.log(storeDataArray[i].cookiesSoldArray[j]);
+      let allCookies = storeDataArray[i].cookiesSoldArray[j];
+      // need to collect cookies sold per hour and put in new array...
+      hourlyCookiesArray.push(allCookies);
+      //gives the grand total sum of all cookies sold in one day
+      let sum = allCookies + start;
+      start = sum;
+      //console.log(start);
+    }
   }
-}
-
+};
+seattle.totalCookies();
 // created another empty array to contain all the total of cookies each hour for store
 // i.e. at 6 am total cookies sold at seattle + tokyo + dubai + paris + lima = hour01
 // created total of 15 elements

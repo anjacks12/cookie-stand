@@ -4,12 +4,14 @@
   box-sizing: border-box;
 }
 
+/*  */
+
 #homebody {
   background-color: rgb(207, 197, 182);
 }
 
-#home header {
-  background-color: rgb(87, 87, 87);
+header {
+  background-color: rgb(133, 133, 133);
   height: 80px;
 }
 
@@ -55,7 +57,7 @@ nav a {
   width: 960px;
 }
 
-#home h1 {
+#homebody h1 {
   width: 960px;
   font-family: 'Fredericka the Great', cursive;
   font-size: 6rem;
@@ -104,26 +106,26 @@ article>a {
   color: black;
   text-decoration: none;
   padding: 3px;
-  background-color: rgb(100, 100, 100);
+  background-color: rgb(133, 133, 133);
   margin: 2rem 0;
   border-width: 0.5rem;
   color: white;
 }
 
 article>a:hover {
-  color: salmon;
+  color: rgb(233, 132, 132);
   transition: 350ms;
 }
 
-footer {
-  background-color: rgb(100, 100, 100);
+#homefooter {
+  background-color: rgb(133, 133, 133);
   height: 100px;
 }
 
-footer>img {
+#homefooter>img {
   margin: 0 1rem;
 }
-footer>ol {
+#homefooter>ol {
   display: inline-block;
   font-size: medium;
 }
@@ -136,8 +138,52 @@ ol>li {
   font-size: 1rem;
 }
 
-footer a {
+#homefooter a {
   margin: 0;
   color: beige;
   text-decoration: none;
+}
+
+/*  Sales Page Styling  */
+
+body.sales {
+  background-color: rgb(207, 197, 182);
+}
+
+h1.sales {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  margin-bottom: 1rem;
+  width: 960px;
+  font-size: 3rem;
+}
+
+form {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+ul {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  width: 100%;
+  background-color: rgb(133, 133, 133);
+  color: black;
+  font-weight: 525;
+}
+
+footer.sales a {
+  font-size: 1.5rem;
+  color: black;
 }

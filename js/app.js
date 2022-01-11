@@ -143,6 +143,9 @@ Store.prototype.renderHourlySales = function() {
     hourlyTotal.textContent = totalHourlyCookiesSaleArray[i];
     trFoot.appendChild(hourlyTotal);
   }
+  let totalSold = document.createElement('th');
+  totalSold.textContent = `${this.totalCookies.total}`;
+  trFoot.appendChild(totalSold);
 };
 
 // created empty array to store all the hourly cookies sold from each store
@@ -150,73 +153,83 @@ let hourlyCookiesArray = [];
 
 Store.prototype.totalCookies = function() {
   // created one array that contains all the cookies sold for all 5 stores (total was 70 elements)
-  let start = 0;
+  let total = 0;
   for (let j = 0; j < hoursArray.length; j++) {
+    let hourlyReset = 0;
     for (let i = 0; i < storeDataArray.length; i++) {
       //console.log(storeDataArray[i].cookiesSoldArray[j]);
       let allCookies = storeDataArray[i].cookiesSoldArray[j];
       // need to collect cookies sold per hour and put in new array...
+      let totalHourCookies = allCookies + hourlyReset;
+      hourlyReset = totalHourCookies;
+      console.log(hourlyReset);
       hourlyCookiesArray.push(allCookies);
+      //console.log(hourlyCookiesArray);
       //gives the grand total sum of all cookies sold in one day
-      let sum = allCookies + start;
-      start = sum;
-      //console.log(start);
+      let sum = allCookies + total;
+      total = sum;
+      //console.log(total);
     }
+    // need to get total hour value and save it
   }
+  //console.log(hourlyCookiesArray);
+  // need sums for every 5th element: [0],[4] [5],[10]...[65],[69]
+  //let firstHour = hourlyCookiesArray([0],[1]);
+  //console.log(firstHour);
 };
 seattle.totalCookies();
 // created another empty array to contain all the total of cookies each hour for store
 // i.e. at 6 am total cookies sold at seattle + tokyo + dubai + paris + lima = hour01
 // created total of 15 elements
-let totalHourlyCookiesSaleArray = [];
+// let totalHourlyCookiesSaleArray = [];
 
-// 6 am
-let hour01 = hourlyCookiesArray[0] + hourlyCookiesArray[1] + hourlyCookiesArray[2] + hourlyCookiesArray[3] + hourlyCookiesArray[4];
-totalHourlyCookiesSaleArray.push(hour01);
-// 7 am
-let hour02 = hourlyCookiesArray[5] + hourlyCookiesArray[6] + hourlyCookiesArray[7] + hourlyCookiesArray[8] + hourlyCookiesArray[9];
-totalHourlyCookiesSaleArray.push(hour02);
-// 8 am
-let hour03 = hourlyCookiesArray[10] + hourlyCookiesArray[11] + hourlyCookiesArray[12] + hourlyCookiesArray[13] + hourlyCookiesArray[14];
-totalHourlyCookiesSaleArray.push(hour03);
-// 9 am
-let hour04 = hourlyCookiesArray[15] + hourlyCookiesArray[16] + hourlyCookiesArray[17] + hourlyCookiesArray[18] + hourlyCookiesArray[19];
-totalHourlyCookiesSaleArray.push(hour04);
-// 10 am
-let hour05 = hourlyCookiesArray[20] + hourlyCookiesArray[21] + hourlyCookiesArray[22] + hourlyCookiesArray[23] + hourlyCookiesArray[24];
-totalHourlyCookiesSaleArray.push(hour05);
-// 11 am
-let hour06 = hourlyCookiesArray[25] + hourlyCookiesArray[26] + hourlyCookiesArray[27] + hourlyCookiesArray[28] + hourlyCookiesArray[29];
-totalHourlyCookiesSaleArray.push(hour06);
-// 12 pm
-let hour07 = hourlyCookiesArray[30] + hourlyCookiesArray[31] + hourlyCookiesArray[32] + hourlyCookiesArray[33] + hourlyCookiesArray[34];
-totalHourlyCookiesSaleArray.push(hour07);
-// 1 pm
-let hour08 = hourlyCookiesArray[35] + hourlyCookiesArray[36] + hourlyCookiesArray[37] + hourlyCookiesArray[38] + hourlyCookiesArray[39];
-totalHourlyCookiesSaleArray.push(hour08);
-// 2 pm
-let hour09 = hourlyCookiesArray[40] + hourlyCookiesArray[41] + hourlyCookiesArray[42] + hourlyCookiesArray[43] + hourlyCookiesArray[44];
-totalHourlyCookiesSaleArray.push(hour09);
-// 3 pm
-let hour10 = hourlyCookiesArray[45] + hourlyCookiesArray[46] + hourlyCookiesArray[47] + hourlyCookiesArray[48] + hourlyCookiesArray[49];
-totalHourlyCookiesSaleArray.push(hour10);
-// 4 pm
-let hour11 = hourlyCookiesArray[50] + hourlyCookiesArray[51] + hourlyCookiesArray[52] + hourlyCookiesArray[53] + hourlyCookiesArray[54];
-totalHourlyCookiesSaleArray.push(hour11);
-// 5 pm
-let hour12 = hourlyCookiesArray[55] + hourlyCookiesArray[56] + hourlyCookiesArray[57] + hourlyCookiesArray[58] + hourlyCookiesArray[59];
-totalHourlyCookiesSaleArray.push(hour12);
-// 6 pm
-let hour13 = hourlyCookiesArray[60] + hourlyCookiesArray[61] + hourlyCookiesArray[62] + hourlyCookiesArray[63] + hourlyCookiesArray[64];
-totalHourlyCookiesSaleArray.push(hour13);
-// 7 pm
-let hour14 = hourlyCookiesArray[65] + hourlyCookiesArray[66] + hourlyCookiesArray[67] + hourlyCookiesArray[68] + hourlyCookiesArray[69];
-totalHourlyCookiesSaleArray.push(hour14);
+// // 6 am
+// let hour01 = hourlyCookiesArray[0] + hourlyCookiesArray[1] + hourlyCookiesArray[2] + hourlyCookiesArray[3] + hourlyCookiesArray[4];
+// totalHourlyCookiesSaleArray.push(hour01);
+// // 7 am
+// let hour02 = hourlyCookiesArray[5] + hourlyCookiesArray[6] + hourlyCookiesArray[7] + hourlyCookiesArray[8] + hourlyCookiesArray[9];
+// totalHourlyCookiesSaleArray.push(hour02);
+// // 8 am
+// let hour03 = hourlyCookiesArray[10] + hourlyCookiesArray[11] + hourlyCookiesArray[12] + hourlyCookiesArray[13] + hourlyCookiesArray[14];
+// totalHourlyCookiesSaleArray.push(hour03);
+// // 9 am
+// let hour04 = hourlyCookiesArray[15] + hourlyCookiesArray[16] + hourlyCookiesArray[17] + hourlyCookiesArray[18] + hourlyCookiesArray[19];
+// totalHourlyCookiesSaleArray.push(hour04);
+// // 10 am
+// let hour05 = hourlyCookiesArray[20] + hourlyCookiesArray[21] + hourlyCookiesArray[22] + hourlyCookiesArray[23] + hourlyCookiesArray[24];
+// totalHourlyCookiesSaleArray.push(hour05);
+// // 11 am
+// let hour06 = hourlyCookiesArray[25] + hourlyCookiesArray[26] + hourlyCookiesArray[27] + hourlyCookiesArray[28] + hourlyCookiesArray[29];
+// totalHourlyCookiesSaleArray.push(hour06);
+// // 12 pm
+// let hour07 = hourlyCookiesArray[30] + hourlyCookiesArray[31] + hourlyCookiesArray[32] + hourlyCookiesArray[33] + hourlyCookiesArray[34];
+// totalHourlyCookiesSaleArray.push(hour07);
+// // 1 pm
+// let hour08 = hourlyCookiesArray[35] + hourlyCookiesArray[36] + hourlyCookiesArray[37] + hourlyCookiesArray[38] + hourlyCookiesArray[39];
+// totalHourlyCookiesSaleArray.push(hour08);
+// // 2 pm
+// let hour09 = hourlyCookiesArray[40] + hourlyCookiesArray[41] + hourlyCookiesArray[42] + hourlyCookiesArray[43] + hourlyCookiesArray[44];
+// totalHourlyCookiesSaleArray.push(hour09);
+// // 3 pm
+// let hour10 = hourlyCookiesArray[45] + hourlyCookiesArray[46] + hourlyCookiesArray[47] + hourlyCookiesArray[48] + hourlyCookiesArray[49];
+// totalHourlyCookiesSaleArray.push(hour10);
+// // 4 pm
+// let hour11 = hourlyCookiesArray[50] + hourlyCookiesArray[51] + hourlyCookiesArray[52] + hourlyCookiesArray[53] + hourlyCookiesArray[54];
+// totalHourlyCookiesSaleArray.push(hour11);
+// // 5 pm
+// let hour12 = hourlyCookiesArray[55] + hourlyCookiesArray[56] + hourlyCookiesArray[57] + hourlyCookiesArray[58] + hourlyCookiesArray[59];
+// totalHourlyCookiesSaleArray.push(hour12);
+// // 6 pm
+// let hour13 = hourlyCookiesArray[60] + hourlyCookiesArray[61] + hourlyCookiesArray[62] + hourlyCookiesArray[63] + hourlyCookiesArray[64];
+// totalHourlyCookiesSaleArray.push(hour13);
+// // 7 pm
+// let hour14 = hourlyCookiesArray[65] + hourlyCookiesArray[66] + hourlyCookiesArray[67] + hourlyCookiesArray[68] + hourlyCookiesArray[69];
+// totalHourlyCookiesSaleArray.push(hour14);
 
-// used for loop to iterate through the array once to get the total number of cookies sold for each hour; placed in tfoot of table above
-for (let i = 4; i < storeDataArray.length; i++) {
-  storeDataArray[i].renderHourlySales();
-}
+// // used for loop to iterate through the array once to get the total number of cookies sold for each hour; placed in tfoot of table above
+// for (let i = 4; i < storeDataArray.length; i++) {
+//   storeDataArray[i].renderHourlySales();
+// }
 
 // run the event listener to get information from newStore form
 newStoreForm.addEventListener('submit', submitHandler);

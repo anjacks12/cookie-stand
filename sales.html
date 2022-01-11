@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link href="index.html"/>
     <style>
-      header {
+      /* h1.sales {
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -25,13 +25,13 @@
         margin-top: 2rem;
         margin-bottom: 5rem;
         width: 100%;
-      }
+      } */
     </style>
 
   </head>
-  <body>
+  <body class="sales">
     <header>
-      <h1>Salmon Cookie Project</h1>
+      <h1 class="sales">Pat's Salmon Cookie Sales Data</h1>
     </header>
     <main>
 
@@ -40,28 +40,29 @@
         <fieldset>
           <legend>Add a New Store</legend>
           <label>Name of Store
-            <input type="text" name="storename">
+            <input type="text" for="storename" name="storename">
           </label></br>
           <label>Minimum Number of Customers
-            <input type="number" name="mincustomer">
+            <input type="number" for="mincustomer" name="mincustomer">
           </label></br>
           <label>Maximum Number of Customers
-            <input type="number" name="maxcustomer">
+            <input type="number" for="maxcustomer" name="maxcustomer">
           </label></br>
           <label>Average Cookies Sold per Hour
-            <input type="number" name="cookiesperhour" step="any">
+            <input type="number" for="cookiesperhour" name="cookiesperhour" step="any">
           </label></br>
-          <input type="submit" name="addstore">
+          <input type="submit" for="addstore" name="addstore">
         </fieldset>
       </form></br>
 
-      <div id="cookiesSoldData">
-      <h2 id="cookieStore"></h2>
+      <div class="sales">
+      <h2 class="sales"></h2>
       </div>
       <table id="table">
       </table>
     </main>
-    <footer>
+    <footer class="sales">
+      <a href="index.html">Pat's Salmon Cookie Homepage</a>
     </footer>
     <script src="js/app.js" type="text/javascript"></script>
   </body>

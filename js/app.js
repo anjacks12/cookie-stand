@@ -44,39 +44,6 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
   storeDataArray.push(this);
 }
 
-// create event handler to target event(adding new store with information from form)
-function submitHandler(event) {
-  event.preventDefault();
-  //console.log(event);
-  let storeName = event.target.storename.value;
-  let newMinCustomer = parseInt(event.target.mincustomer.value);
-  let newMaxCustomer = parseInt(event.target.maxcustomer.value);
-  let newAvgCookieSale = parseInt(event.target.cookiesperhour.value);
-  let newStartOfDaySales = 0;
-  // create new store from form
-  let newStore = new Store(storeName, newMinCustomer, newMaxCustomer, newAvgCookieSale, newStartOfDaySales);
-  // render new store onto page
-  newStore.render();
-  newStore.renderCookieSales();
-}
-
-// constructor parameters (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales)
-let seattle = new Store('Seattle', 23, 65, 6.3, 0);
-//seattle.render();
-
-let tokyo = new Store('Tokyo', 3, 24, 1.2, 0);
-//tokyo.render();
-
-let dubai = new Store('Dubai', 11, 38, 3.7, 0);
-//dubai.render();
-
-let paris = new Store('Paris', 20, 38, 2.3, 0);
-//paris.render();
-
-let lima = new Store('Lima', 2, 16, 4.6, 0);
-//lima.render();
-
-
 // TABLE HEADER: create prototype to add store hours and total store cookies sold in table
 Store.prototype.renderHours = function () {
   let thead = document.createElement('thead');
@@ -146,6 +113,38 @@ Store.prototype.renderTotalCookies = function() {
   }
   console.log(grandTotal);
 };
+
+// create event handler to target event(adding new store with information from form)
+function submitHandler(event) {
+  event.preventDefault();
+  //console.log(event);
+  let storeName = event.target.storename.value;
+  let newMinCustomer = parseInt(event.target.mincustomer.value);
+  let newMaxCustomer = parseInt(event.target.maxcustomer.value);
+  let newAvgCookieSale = parseInt(event.target.cookiesperhour.value);
+  let newStartOfDaySales = 0;
+  // create new store from form
+  let newStore = new Store(storeName, newMinCustomer, newMaxCustomer, newAvgCookieSale, newStartOfDaySales);
+  // render new store onto page
+  newStore.render();
+  newStore.renderCookieSales();
+}
+
+// constructor parameters (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales)
+let seattle = new Store('Seattle', 23, 65, 6.3, 0);
+//seattle.render();
+
+let tokyo = new Store('Tokyo', 3, 24, 1.2, 0);
+//tokyo.render();
+
+let dubai = new Store('Dubai', 11, 38, 3.7, 0);
+//dubai.render();
+
+let paris = new Store('Paris', 20, 38, 2.3, 0);
+//paris.render();
+
+let lima = new Store('Lima', 2, 16, 4.6, 0);
+//lima.render();
 
 // instantiating the 5 stores and rendering table of number of cookies sold below
 for (let i = 0; i < storeDataArray.length; i++) {

@@ -10,6 +10,9 @@ let hoursArray = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 
 // create array for all cookie stores
 let storeDataArray = [];
 
+// created empty array to store all the hourly cookies sold from each store
+let hourlyCookiesArray = [];
+
 // create constructor function to replace object literals of stores
 function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) {
   this.name = name;
@@ -30,13 +33,8 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
     for (let i = 0; i < hoursArray.length; i++) {
       let hourlyCookies = Math.ceil((this.avgCookieSale * this.randomCustomerNumber()));
       this.cookiesSoldArray.push(hourlyCookies);
-
-      // need to get total number of cookies sold for the day by summing all 14 values cookiesSoldArray
-      //this.startOfDaySales holds 0 value + totalCookiesSold
       let totalCookiesSold = (hourlyCookies + this.startOfDaySales);
-      //console.log(hourlyCookies);
       this.startOfDaySales = totalCookiesSold;
-
     }
   };
   // method to render the cookies data
@@ -61,7 +59,6 @@ function submitHandler(event) {
   newStore.render();
   newStore.renderCookieSales();
 }
-
 
 // constructor parameters (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales)
 let seattle = new Store('Seattle', 23, 65, 6.3, 0);
@@ -117,6 +114,39 @@ Store.prototype.renderCookieSales = function() {
   trBody.appendChild(totalStoreSales);
 };
 
+Store.prototype.renderTotalCookies = function() {
+  // Got a lot of help on this from Sheyna, otherwise I would have never figured it out
+  // Got help from Harvey from class on how to render the hourly total to the table footer
+  // created one array that contains all the cookies sold for all 5 stores (total was 70 elements)
+  let tfoot = document.createElement('tfoot');
+  table.appendChild(tfoot);
+  let trFoot = document.createElement('tr');
+  tfoot.appendChild(trFoot);
+  let thEmpty = document.createElement('th');
+  thEmpty.textContent = 'Total';
+  trFoot.appendChild(thEmpty);
+  // start nested for loop to get grandTotal cookies sales from each store
+  // j is the outer loop with length of 5
+  // i is the inner loop with length of 14; iterates faster on inner loop
+  let grandTotal = 0; // grandTotal is the counter for all the cookies sold for the entire day
+  for (let j = 0; j < hoursArray.length; j++) {
+    let hourlyReset = 0; // hourlyReset resets the running total for each hour (clears the counter for each outer loop iteration)
+    for (let i = 0; i < storeDataArray.length; i++) {
+      let allCookies = storeDataArray[i].cookiesSoldArray[j];
+      let totalHourCookies = allCookies + hourlyReset;
+      hourlyReset = totalHourCookies;
+      let runningTotal = allCookies + grandTotal;
+      grandTotal = runningTotal;
+    }
+    hourlyCookiesArray.push(hourlyReset);
+    let hourlyTotal = document.createElement('th');
+    hourlyTotal.textContent = hourlyCookiesArray[j];
+    trFoot.appendChild(hourlyTotal);
+    // need to get total hour value and save it
+  }
+  console.log(grandTotal);
+};
+
 // instantiating the 5 stores and rendering table of number of cookies sold below
 for (let i = 0; i < storeDataArray.length; i++) {
   storeDataArray[i].render();
@@ -126,73 +156,9 @@ for (let i = 0; i < storeDataArray.length; i++) {
 // used for loop to iterate once to get store hours (6 am to 7 pm) to load at bottom of page
 for (let i = 4; i < storeDataArray.length; i++) {
   storeDataArray[i].renderHours();
+  storeDataArray[i].renderTotalCookies();
 }
-
-
-// created empty array to store all the hourly cookies sold from each store
-let hourlyCookiesArray = [];
-
-
-Store.prototype.totalCookies = function() {
-  // Got a lot of help on this from Sheyna, otherwise I would have never figured it out
-  // created one array that contains all the cookies sold for all 5 stores (total was 70 elements)
-  let total = 0;
-  for (let j = 0; j < hoursArray.length; j++) {
-    let hourlyReset = 0;
-    for (let i = 0; i < storeDataArray.length; i++) {
-      //console.log(storeDataArray[i].cookiesSoldArray[j]);
-      let allCookies = storeDataArray[i].cookiesSoldArray[j];
-      // need to collect cookies sold per hour and put in new array...
-      let totalHourCookies = allCookies + hourlyReset;
-      hourlyReset = totalHourCookies;
-      //console.log(`in inner loop`,hourlyReset);
-      //console.log(hourlyCookiesArray);
-      //gives the grand total sum of all cookies sold in one day
-      let sum = allCookies + total;
-      total = sum;
-      //hourlyCookiesArray.push(total);
-      //console.log(total);
-    }
-    //console.log(`after inner loop`,hourlyReset);
-    hourlyCookiesArray.push(hourlyReset);
-    //console.log(hourlyCookiesArray);
-    // need to get total hour value and save it
-  }
-  
-  console.log(total);
-};
-//seattle.totalCookies();
-
-
-// TABLE FOOTER: create prototype to add total hourly cookie sales in table
-Store.prototype.renderHourlySales = function() {
-  this.totalCookies();
-  let tfoot = document.createElement('tfoot');
-  table.appendChild(tfoot);
-  let trFoot = document.createElement('tr');
-  tfoot.appendChild(trFoot);
-  let thEmpty = document.createElement('th');
-  thEmpty.textContent = 'Total';
-  trFoot.appendChild(thEmpty);
-  for (let i =0; i < hoursArray.length; i++) {
-    let hourlyTotal = document.createElement('th');
-    hourlyTotal.textContent = hourlyCookiesArray[i];
-    //console.log(hourlyCookiesArray);
-    trFoot.appendChild(hourlyTotal);
-  }
-  // let totalSold = document.createElement('th');
-  // totalSold.textContent = this.;
-  // trFoot.appendChild(totalSold);
-};
-seattle.renderHourlySales();
-
-//seattle.renderHourlySales();
-// // used for loop to iterate through the array once to get the total number of cookies sold for each hour; placed in tfoot of table above
-// for (let i = 4; i < storeDataArray.length; i++) {
-//   this.renderHourlySales();
-// }
 
 // run the event listener to get information from newStore form
 newStoreForm.addEventListener('submit', submitHandler);
 //formName.reset(); to reset form
-

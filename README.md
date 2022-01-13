@@ -3,6 +3,7 @@
 ## Salmon Cookie Project
 
 This project will calculate the amount of cookies needed to provide an adequate supply of inventory for stores in different locations.
+This project will also create table that contains the number of cookies sold each hour from each store as well as incorporating new stores and their values.
 
 ### Author: Angela Jackson
 
@@ -11,6 +12,7 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * [Nested Arrays in JavaScript](https://www.elated.com/nested-arrays-in-javascript/)[^1]
 * [How to Create Mailto Links](https://www.w3docs.com/snippets/html/how-to-create-mailto-links.html)[^2]
 * [HTML5 Input: Numbers with Decimals](https://www.adventuresintechland.com/html5-input-numbers-with-decimals)[^3]
+* [MDN HTMLFormElement: reset event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset_event)
 
 ### Pull Requests
 
@@ -26,7 +28,8 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * [06 Jan 2022 / day 10](https://github.com/anjacks12/cookie-stand/pull/10)
 * [08 Jan 2022 / day 11](https://github.com/anjacks12/cookie-stand/pull/11)
 * [08 Jan 2022 / day 11](https://github.com/anjacks12/cookie-stand/pull/12)
-* [day 12](URL)
+* [11 Jan 2022 / day 12](https://github.com/anjacks12/cookie-stand/pull/12)
+* [13 Jan 2022 / day 13](URL)
 
 ### Reflections and Comments
 
@@ -41,3 +44,5 @@ This project will calculate the amount of cookies needed to provide an adequate 
 * Day 9: started styling the index.html for the public-facing page for the lab[^2]
 * Day 10: cleaned up CSS code a bit and turned in lab
 * Day 11: added a form to the page that used the information collected to create a new store [^3]; I have to go back and rework a lot of code to be able to remove the rendered list and leave only the form and table on the page; created a pull request for the working code now just in case I end up "lost" in re-working the code
+* Day 12: Sheyna saved the day again! She helped me with figuring out how to get the hourly totals; Today was a good day to start cleaning up my code and attempt to make it look more presentable
+* Day 13: Attempted to get the lab finished today but couldn't figure out how to get the cookies sold from the new stores created from the form to add up correctly. I will turn in what I have so far and hopefully will come to a solution later

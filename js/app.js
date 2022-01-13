@@ -13,6 +13,13 @@ let storeDataArray = [];
 // created empty array to store all the hourly cookies sold from each store
 let hourlyCookiesArray = [];
 
+//function to create new element
+function makeNewElement(newEl, text, parentEl) {
+  let newElement = document.createElement(newEl);
+  newElement.textContent = text;
+  parentEl.appendChild(newElement);
+}
+
 // create constructor function to replace object literals of stores
 function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) {
   this.name = name;
@@ -22,27 +29,28 @@ function Store (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales) 
   this.startOfDaySales = startOfDaySales;
   // need to an empty array to store numbers of cookies sold and the hour
   this.cookiesSoldArray = [];
-
-  // method to generate random
-  this.randomCustomerNumber = function () {
-    return Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
-  };
-
-  // method to calculate cookies per hour
-  this.numberOfCookiesPerHour = function () {
-    for (let i = 0; i < hoursArray.length; i++) {
-      let hourlyCookies = Math.ceil((this.avgCookieSale * this.randomCustomerNumber()));
-      this.cookiesSoldArray.push(hourlyCookies);
-      let totalCookiesSold = (hourlyCookies + this.startOfDaySales);
-      this.startOfDaySales = totalCookiesSold;
-    }
-  };
-  // method to render the cookies data
-  this.render = function () {
-    this.numberOfCookiesPerHour();
-  };
   storeDataArray.push(this);
 }
+
+// method to generate random
+Store.prototype.randomCustomerNumber = function () {
+  return Math.floor(Math.random() * (this.maxCustomer - this.minCustomer + 1) + this.minCustomer);
+};
+
+// method to calculate cookies per hour
+Store.prototype.numberOfCookiesPerHour = function () {
+  for (let i = 0; i < hoursArray.length; i++) {
+    let hourlyCookies = Math.ceil((this.avgCookieSale * this.randomCustomerNumber()));
+    this.cookiesSoldArray.push(hourlyCookies);
+    let totalCookiesSold = (hourlyCookies + this.startOfDaySales);
+    this.startOfDaySales = totalCookiesSold;
+  }
+};
+
+// method to generate the cookies data
+Store.prototype.render = function () {
+  this.numberOfCookiesPerHour();
+};
 
 // TABLE HEADER: create prototype to add store hours and total store cookies sold in table
 Store.prototype.renderHours = function () {
@@ -53,13 +61,9 @@ Store.prototype.renderHours = function () {
   let thEmpty = document.createElement('th');
   trHeader.appendChild(thEmpty);
   for (let i = 0; i < hoursArray.length; i++) {
-    let hoursRow = document.createElement('th');
-    hoursRow.textContent = hoursArray[i];
-    trHeader.appendChild(hoursRow);
+    makeNewElement('th', hoursArray[i], trHeader);
   }
-  let locationTotal = document.createElement('th');
-  locationTotal.textContent = 'Daily Location Total';
-  trHeader.appendChild(locationTotal);
+  makeNewElement('th', 'Daily Location Total', trHeader);
 };
 
 // TABLE BODY: create prototype to add store name, cookie sold each hour and total cookies sold at each store in table
@@ -68,17 +72,11 @@ Store.prototype.renderCookieSales = function() {
   table.appendChild(tbody);
   let trBody = document.createElement('tr');
   tbody.appendChild(trBody);
-  let storeName = document.createElement('td');
-  storeName.textContent = `${this.name}`;
-  trBody.appendChild(storeName);
+  makeNewElement('td', `${this.name}`, trBody);
   for (let i = 0; i < hoursArray.length; i++) {
-    let tdBody = document.createElement('td');
-    tdBody.textContent = this.cookiesSoldArray[i];
-    trBody.appendChild(tdBody);
+    makeNewElement('td', this.cookiesSoldArray[i], trBody);
   }
-  let totalStoreSales = document.createElement('td');
-  totalStoreSales.textContent = this.startOfDaySales;
-  trBody.appendChild(totalStoreSales);
+  makeNewElement('td', this.startOfDaySales, trBody);
 };
 
 Store.prototype.renderTotalCookies = function() {
@@ -89,9 +87,8 @@ Store.prototype.renderTotalCookies = function() {
   table.appendChild(tfoot);
   let trFoot = document.createElement('tr');
   tfoot.appendChild(trFoot);
-  let thEmpty = document.createElement('th');
-  thEmpty.textContent = 'Total';
-  trFoot.appendChild(thEmpty);
+  makeNewElement('th','Total',trFoot);
+
   // start nested for loop to get grandTotal cookies sales from each store
   // j is the outer loop with length of 5
   // i is the inner loop with length of 14; iterates faster on inner loop
@@ -106,12 +103,15 @@ Store.prototype.renderTotalCookies = function() {
       grandTotal = runningTotal;
     }
     hourlyCookiesArray.push(hourlyReset);
-    let hourlyTotal = document.createElement('th');
-    hourlyTotal.textContent = hourlyCookiesArray[j];
-    trFoot.appendChild(hourlyTotal);
     // need to get total hour value and save it
   }
   console.log(grandTotal);
+  hourlyCookiesArray.push(grandTotal);
+  console.log(hourlyCookiesArray);
+  for (let j = 0; j < hoursArray.length; j++) {
+    makeNewElement('th',hourlyCookiesArray[j],trFoot);
+  }
+  makeNewElement('th',grandTotal,trFoot);
 };
 
 // create event handler to target event(adding new store with information from form)
@@ -128,6 +128,7 @@ function submitHandler(event) {
   // render new store onto page
   newStore.render();
   newStore.renderCookieSales();
+  newStore.renderTotalCookies();
 }
 
 // constructor parameters (name, minCustomer, maxCustomer, avgCookieSale, startOfDaySales)

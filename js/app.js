@@ -13,9 +13,6 @@ let hoursArray = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 
 // create array for all cookie stores
 let storeDataArray = [];
 
-// created empty array to store all the hourly cookies sold from each store
-let hourlyCookiesArray = [];
-
 //function to create new element
 function makeNewElement(newEl, text, parentEl) {
   let newElement = document.createElement(newEl);
@@ -74,22 +71,22 @@ function renderHours() {
   makeNewElement('th', 'Daily Location Total', trHeader);
 }
 
-
-
+// TABLE FOOTER:
+//Got a lot of help from Sheyna on how to get the hourly and grand total sold values
+//Got help from Harvey in class on how to render the hourly total to the table footer
 function renderTotalCookies() {
-  // Got a lot of help on this from Sheyna, otherwise I would have never figured it out
-  // Got help from Harvey from class on how to render the hourly total to the table footer
-  // created one array that contains all the cookies sold for all 5 stores (total was 70 elements)
   let trFoot = document.createElement('tr');
   tfoot.appendChild(trFoot);
   makeNewElement('th','Total',trFoot);
 
+  // created empty array to store all the hourly cookies sold from each store
+  let hourlyCookiesArray = [];
   // start nested for loop to get grandTotal cookies sales from each store
-  // j is the outer loop with length of 5
-  // i is the inner loop with length of 14; iterates faster on inner loop
   let grandTotal = 0; // grandTotal is the counter for all the cookies sold for the entire day
+  // j is the outer loop with length of 5
   for (let j = 0; j < hoursArray.length; j++) {
     let hourlyReset = 0; // hourlyReset resets the running total for each hour (clears the counter for each outer loop iteration)
+    // i is the inner loop with length of 14; iterates faster on inner loop
     for (let i = 0; i < storeDataArray.length; i++) {
       let allCookies = storeDataArray[i].cookiesSoldArray[j];
       let totalHourCookies = allCookies + hourlyReset;
@@ -97,22 +94,22 @@ function renderTotalCookies() {
       let runningTotal = allCookies + grandTotal;
       grandTotal = runningTotal;
     }
+    //total hourly cookies sold pushed to array
     hourlyCookiesArray.push(hourlyReset);
-    // need to get total hour value and save it
   }
-  console.log(grandTotal);
+  //hourly totals generated in table footer
   hourlyCookiesArray.push(grandTotal);
-  console.log(hourlyCookiesArray);
+  console.log('grandTotal',grandTotal);
   for (let j = 0; j < hoursArray.length; j++) {
     makeNewElement('th',hourlyCookiesArray[j],trFoot);
   }
+  //grand total cookies sold in last colum
   makeNewElement('th',grandTotal,trFoot);
 }
 
 // create event handler to target event(adding new store with information from form)
 function submitHandler(event) {
   event.preventDefault();
-  //console.log(event);
   let storeName = event.target.storename.value;
   let newMinCustomer = parseInt(event.target.mincustomer.value);
   let newMaxCustomer = parseInt(event.target.maxcustomer.value);
@@ -122,7 +119,7 @@ function submitHandler(event) {
   let newStore = new Store(storeName, newMinCustomer, newMaxCustomer, newAvgCookieSale, newStartOfDaySales);
   // render new store onto page
   newStore.renderCookieSales();
-  //tfoot.innerHTML=('');
+  tfoot.innerHTML= '';
   renderTotalCookies();
 }
 
@@ -147,9 +144,9 @@ for (let i = 0; i < storeDataArray.length; i++) {
   storeDataArray[i].renderCookieSales();
 }
 
+// render store hours and total cookies sold each hour on table
 renderHours();
 renderTotalCookies();
 
 // run the event listener to get information from newStore form
 newStoreForm.addEventListener('submit', submitHandler);
-//formName.reset(); to reset form

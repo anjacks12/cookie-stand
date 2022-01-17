@@ -7,6 +7,10 @@ This project will also create table that contains the number of cookies sold eac
 
 ### Author: Angela Jackson
 
+* Special thanks to:
+  * Sheyna (instructor) who helped me in this lab with figuring out how to get the hourly totals/grand total
+  * Harvey (classmate) who helped me with how to render my hourly totals in the table footer
+
 ### Links and Resources
 
 * [Nested Arrays in JavaScript](https://www.elated.com/nested-arrays-in-javascript/)[^1]
@@ -29,7 +33,8 @@ This project will also create table that contains the number of cookies sold eac
 * [08 Jan 2022 / day 11](https://github.com/anjacks12/cookie-stand/pull/11)
 * [08 Jan 2022 / day 11](https://github.com/anjacks12/cookie-stand/pull/12)
 * [11 Jan 2022 / day 12](https://github.com/anjacks12/cookie-stand/pull/12)
-* [13 Jan 2022 / day 13](URL)
+* [13 Jan 2022 / day 13](https://github.com/anjacks12/cookie-stand/pull/13)
+* [16 Jan 2022 / day 14](https://github.com/anjacks12/cookie-stand/pull/14)
 
 ### Reflections and Comments
 
@@ -45,4 +50,5 @@ This project will also create table that contains the number of cookies sold eac
 * Day 10: cleaned up CSS code a bit and turned in lab
 * Day 11: added a form to the page that used the information collected to create a new store [^3]; I have to go back and rework a lot of code to be able to remove the rendered list and leave only the form and table on the page; created a pull request for the working code now just in case I end up "lost" in re-working the code
 * Day 12: Sheyna saved the day again! She helped me with figuring out how to get the hourly totals; Today was a good day to start cleaning up my code and attempt to make it look more presentable
-* Day 13: Attempted to get the lab finished today but couldn't figure out how to get the cookies sold from the new stores created from the form to add up correctly. I will turn in what I have so far and hopefully will come to a solution later
+* Day 13: Attempted to get the lab finished today but couldn't figure out how to get the cookies sold from the new stores created from the form to add up correctly. I will turn in what I have so far and hopefully will come to a solution later; got help on how to render totals in table footer from Harvey in class
+* Day 14: was able to finish up the last bits that were missing in this lab; hopefully that's a wrap for Salmon Cookies!
